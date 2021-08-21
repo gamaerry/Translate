@@ -5,25 +5,25 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="TOP_CENTER" prefHeight="400.0" prefWidth="600.0" spacing="30.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ControladorTranslate">
+<VBox alignment="TOP_CENTER" prefHeight="400.0" prefWidth="600.0" spacing="20.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ControladorTranslate">
    <children>
-      <TextArea fx:id="escribe" maxHeight="140.0" promptText="Escribe en cualquier idioma" wrapText="true">
+      <TextArea fx:id="escribe" maxHeight="135.0" promptText="Escribe en cualquier idioma" wrapText="true">
          <font>
             <Font size="16.0" />
          </font>
          <VBox.margin>
             <Insets left="20.0" right="20.0" top="20.0" />
          </VBox.margin></TextArea>
+      <Button fx:id="translate" onAction="#translateText" text="Traducir al" />
       <HBox alignment="CENTER" spacing="20.0">
          <children>
-            <RadioButton fx:id="espanol" mnemonicParsing="false" selected="true" text="Español">
+            <RadioButton fx:id="espanol" onAction="#cambiarBoton" selected="true" text="Español">
                <toggleGroup>
                   <ToggleGroup fx:id="languajes" />
                </toggleGroup></RadioButton>
-            <RadioButton fx:id="english" mnemonicParsing="false" text="English" toggleGroup="$languajes" />
+            <RadioButton fx:id="english" onAction="#cambiarBoton" text="English" toggleGroup="$languajes" />
          </children>
       </HBox>
-      <Button fx:id="translate" mnemonicParsing="false" onAction="#translateText" text="Translate!" />
       <Label fx:id="traduccion" wrapText="true">
          <font>
             <Font size="16.0" />

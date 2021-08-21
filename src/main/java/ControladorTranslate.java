@@ -1,5 +1,7 @@
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.text.TextAlignment;
 
 import java.io.*;
 public class ControladorTranslate {
@@ -20,7 +22,13 @@ public class ControladorTranslate {
         espanol.setToggleGroup(languajes);
         english.setToggleGroup(languajes);
     }
-    public void translateText(){
+    public void cambiarBoton(ActionEvent evento){
+        RadioButton languaje=(RadioButton) evento.getSource();
+        boolean toEnglish = languaje.getText().equals("English");
+        translate.setText(toEnglish ?"Translate to":"Traducir al");
+        escribe.setPromptText(toEnglish ?"Write in any language":"Escribe en cualquier idioma");
+    }
+    public void translateText(){ //Puede o no recibir el ActionEvent
         StringBuilder textoTraducido=new StringBuilder(" ");
         try{
             ProcessBuilder comando= new ProcessBuilder(
@@ -31,7 +39,10 @@ public class ControladorTranslate {
                     new InputStreamReader(comando.start().getInputStream()));
             salida.lines().forEach(textoTraducido::append);
         }catch(IOException e){
-            textoTraducido.append("¡ERROR CON EL MOTOR DE TRADUCCIÓN!");
+            textoTraducido.append("¡ERROR WITH THE TRANSLATION ENGINE!\n"+
+                    "(if you are Linux user in Debian based distro, install the engine with: \n"+
+                    "sudo apt-get install translate-shell)");
+            traduccion.setTextAlignment(TextAlignment.CENTER);
         }
         traduccion.setText(textoTraducido.toString());
     }
