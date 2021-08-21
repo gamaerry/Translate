@@ -8,7 +8,7 @@ public class Principal extends Application {
     @Override
     public void start(Stage escenario) throws Exception {
         //String[] datos={"layout_espejo.fxml","Espejo","250","300"}; //CaraCambiante
-        String[] datos={"layout_translate.fxml","Translate!","600","400"}; //Translate
+        String[] datos={"layout_translate.fxml","Translate!","750","400"}; //Translate
         Parent raiz = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(datos[0])));
         escenario.setTitle(datos[1]);
         escenario.setScene(
