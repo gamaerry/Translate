@@ -13,4 +13,12 @@ mainClassName='Principal'
 repositories {
     mavenCentral()
 }
+jar{
+    manifest{
+        attributes 'Main-Class':'Principal'
+    }
+    from {
+        configurations.runtimeClasspath.collect{it}
+    }
+}
 dependencies {}

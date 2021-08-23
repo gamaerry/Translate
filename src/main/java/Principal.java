@@ -2,6 +2,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import java.util.Objects;
 public class Principal extends Application {
@@ -13,6 +14,7 @@ public class Principal extends Application {
         escenario.setTitle(datos[1]);
         escenario.setScene(
                 new Scene(raiz, Integer.parseInt(datos[2]), Integer.parseInt(datos[3])));
+        escenario.getIcons().add(new Image("ico.png"));
         escenario.show();
     }
 }
