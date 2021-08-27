@@ -1,10 +1,16 @@
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.layout.GridPane;
 import javafx.scene.text.TextAlignment;
-
 import java.io.*;
 public class ControladorTranslate {
+    @FXML
+    private GridPane raiz;
     @FXML
     private Button translate;
     @FXML
@@ -45,5 +51,20 @@ public class ControladorTranslate {
             traduccion.setTextAlignment(TextAlignment.CENTER);
         }
         traduccion.setText(textoTraducido.toString());
+    }
+    public void hacerSeleccionable(){
+        TextArea seleccionable=new TextArea(traduccion.getText());
+        traduccion.setVisible(false);
+        seleccionable.setStyle("-fx-font-size: 16");
+        GridPane.setMargin(seleccionable,new Insets(0,20,20,20));
+        seleccionable.setEditable(false);
+        raiz.add(seleccionable,0,2);
+        seleccionable.setWrapText(true);
+    }
+    public void deshacerSeleccionable(){
+        // TODO: 27/08/21  
+    }
+    public void cambiarTema(ActionEvent evento){
+        // TODO: 27/08/21
     }
 }

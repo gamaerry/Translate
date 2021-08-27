@@ -5,7 +5,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane prefHeight="400.0" prefWidth="750" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ControladorTranslate">
+<GridPane prefHeight="400.0" prefWidth="750" fx:id="raiz"
+          xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ControladorTranslate">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     </columnConstraints>
@@ -14,7 +15,7 @@
         <RowConstraints fillHeight="false" minHeight="0" prefHeight="100" vgrow="never" />
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
     </rowConstraints>
-    <TextArea fx:id="escribe" prefHeight="135.0" promptText="Escribe en cualquier idioma" wrapText="true" BorderPane.alignment="CENTER">
+    <TextArea fx:id="escribe" promptText="Escribe en cualquier idioma" wrapText="true">
         <font>
             <Font size="16.0" />
         </font>
@@ -52,7 +53,8 @@
          <Insets />
       </GridPane.margin>
     </GridPane>
-    <Label fx:id="traduccion" wrapText="true" GridPane.rowIndex="2" GridPane.valignment="TOP">
+    <Label fx:id="traduccion" onMouseClicked="#hacerSeleccionable" onMouseDragged="#hacerSeleccionable"
+           wrapText="true" GridPane.rowIndex="2" GridPane.valignment="TOP">
         <font>
             <Font size="16.0" />
         </font>
