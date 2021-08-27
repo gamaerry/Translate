@@ -29,7 +29,7 @@ public class ControladorTranslate {
         escribe.setPromptText(toEnglish ?"Write in any language":"Escribe en cualquier idioma");
     }
     public void translateText(){ //Puede o no recibir el ActionEvent
-        StringBuilder textoTraducido=new StringBuilder(" ");
+        StringBuilder textoTraducido=new StringBuilder();
         try{
             ProcessBuilder comando= new ProcessBuilder(
                     "trans","-b","-t",
@@ -37,7 +37,7 @@ public class ControladorTranslate {
                     !escribe.getText().equals("") ? escribe.getText():"¡INGRESE TEXTO!");
             BufferedReader salida=new BufferedReader(
                     new InputStreamReader(comando.start().getInputStream()));
-            salida.lines().forEach(textoTraducido::append);
+            salida.lines().forEach(linea-> textoTraducido.append(linea+"\n"));
         }catch(IOException e){
             textoTraducido.append("¡ERROR WITH THE TRANSLATION ENGINE!\n"+
                     "(if you are Linux user in Debian based distro, install the engine with: \n"+
