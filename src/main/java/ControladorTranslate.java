@@ -10,6 +10,8 @@ import javafx.scene.text.TextAlignment;
 import java.io.*;
 public class ControladorTranslate {
     @FXML
+    private TextArea seleccionable;
+    @FXML
     private GridPane raiz;
     @FXML
     private Button translate;
@@ -53,16 +55,18 @@ public class ControladorTranslate {
         traduccion.setText(textoTraducido.toString());
     }
     public void hacerSeleccionable(){
-        TextArea seleccionable=new TextArea(traduccion.getText());
+        seleccionable=new TextArea(traduccion.getText());
         traduccion.setVisible(false);
         seleccionable.setStyle("-fx-font-size: 16");
         GridPane.setMargin(seleccionable,new Insets(0,20,20,20));
         seleccionable.setEditable(false);
         raiz.add(seleccionable,0,2);
         seleccionable.setWrapText(true);
+        seleccionable.setOnMouseExited(evento->deshacerSeleccionable());
     }
     public void deshacerSeleccionable(){
-        // TODO: 27/08/21  
+        seleccionable.setVisible(false);
+        traduccion.setVisible(true);
     }
     public void cambiarTema(ActionEvent evento){
         // TODO: 27/08/21

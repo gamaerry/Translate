@@ -8,8 +8,8 @@ javafx{
     modules=['javafx.controls','javafx.fxml']
 }
 group 'mx.cgo'
-version '0.1'
-mainClassName='Principal'
+version '1.0'
+//mainClassName='Principal'
 repositories {
     mavenCentral()
 }
