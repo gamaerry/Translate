@@ -9,7 +9,7 @@ javafx{
 }
 group 'mx.cgo'
 version '1.0'
-//mainClassName='Principal'
+mainClassName='Principal'
 repositories {
     mavenCentral()
 }
