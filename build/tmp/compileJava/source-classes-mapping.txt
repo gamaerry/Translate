@@ -1,6 +1,6 @@
 Principal.java
  Principal
-ControladorTranslate.java
- ControladorTranslate
 ControladorEspejo.java
  ControladorEspejo
+ControladorTranslate.java
+ ControladorTranslate

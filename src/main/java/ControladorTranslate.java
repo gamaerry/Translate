@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.TextAlignment;
 import java.io.*;
 public class ControladorTranslate {
@@ -24,11 +25,14 @@ public class ControladorTranslate {
     @FXML
     private RadioButton english;
     @FXML
+    private ToggleButton dark;
+    @FXML
     private ToggleGroup languajes;
     @FXML
     private void initialize(){
         espanol.setToggleGroup(languajes);
         english.setToggleGroup(languajes);
+        dark.setStyle("-fx-background-radius: 10 10 10 10; -fx-background-color: black; ");
     }
     public void cambiarBoton(ActionEvent evento){
         RadioButton languaje=(RadioButton) evento.getSource();
@@ -69,6 +73,13 @@ public class ControladorTranslate {
         traduccion.setVisible(true);
     }
     public void cambiarTema(ActionEvent evento){
-        // TODO: 27/08/21
+        //-fx-background-color
+        seleccionable.setStyle("-fx-control-inner-background: #000000; -fx-highlight-fill: #ffffff");
+        escribe.setStyle("-fx-control-inner-background: #000000; -fx-highlight-fill: #ffffff");
+        traduccion.setStyle("-fx-control-inner-background: #000000; -fx-highlight-fill: #ffffff");
+        raiz.setStyle("-fx-background-color: #000000; -fx-highlight-fill: #ffffff");
+        espanol.setStyle("-fx-background-color: #000000; -fx-highlight-fill: #ffffff");
+        english.setStyle("-fx-background-color: #000000; -fx-highlight-fill: #ffffff");
+
     }
 }
