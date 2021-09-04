@@ -15,19 +15,15 @@ import javafx.scene.text.TextAlignment;
 import java.io.*;
 public class ControladorTranslate {
     @FXML
-    private TextArea seleccionable;
-    @FXML
     private GridPane raiz;
     @FXML
-    private Button translate;
-    @FXML
-    private TextArea escribe;
+    private TextArea escribe, seleccionable;
     @FXML
     private Label traduccion;
     @FXML
-    private RadioButton espanol;
+    private Button translate;
     @FXML
-    private RadioButton english;
+    private RadioButton espanol, english;
     @FXML
     private DarkButton dark;
     @FXML
@@ -36,6 +32,7 @@ public class ControladorTranslate {
     private void initialize(){
         espanol.setToggleGroup(languajes);
         english.setToggleGroup(languajes);
+        raiz.setStyle("-fx-base:#101010");
     }
     public void cambiarBoton(ActionEvent evento){
         RadioButton languaje=(RadioButton) evento.getSource();
@@ -49,7 +46,7 @@ public class ControladorTranslate {
             ProcessBuilder comando= new ProcessBuilder(
                     "trans","-b","-t",
                     espanol.isSelected()?"es":"en",
-                    !escribe.getText().equals("") ? escribe.getText():"¡INGRESE TEXTO!");
+                    !escribe.getText().isBlank() ? escribe.getText():"¡ENTER TEXT!");
             BufferedReader salida=new BufferedReader(
                     new InputStreamReader(comando.start().getInputStream()));
             salida.lines().forEach(linea-> textoTraducido.append(linea).append("\n"));
