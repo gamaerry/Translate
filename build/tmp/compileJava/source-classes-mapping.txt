@@ -2,5 +2,7 @@ Principal.java
  Principal
 ControladorEspejo.java
  ControladorEspejo
+herramientas/DarkButton.java
+ herramientas.DarkButton
 ControladorTranslate.java
  ControladorTranslate

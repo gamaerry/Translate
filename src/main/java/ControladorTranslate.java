@@ -1,12 +1,16 @@
+import herramientas.DarkButton;
+import javafx.beans.property.ObjectProperty;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
-import javafx.scene.paint.Color;
 import javafx.scene.text.TextAlignment;
 import java.io.*;
 public class ControladorTranslate {
@@ -25,14 +29,13 @@ public class ControladorTranslate {
     @FXML
     private RadioButton english;
     @FXML
-    private ToggleButton dark;
+    private DarkButton dark;
     @FXML
     private ToggleGroup languajes;
     @FXML
     private void initialize(){
         espanol.setToggleGroup(languajes);
         english.setToggleGroup(languajes);
-        dark.setStyle("-fx-background-radius: 10 10 10 10; -fx-background-color: black; ");
     }
     public void cambiarBoton(ActionEvent evento){
         RadioButton languaje=(RadioButton) evento.getSource();
@@ -49,7 +52,7 @@ public class ControladorTranslate {
                     !escribe.getText().equals("") ? escribe.getText():"¡INGRESE TEXTO!");
             BufferedReader salida=new BufferedReader(
                     new InputStreamReader(comando.start().getInputStream()));
-            salida.lines().forEach(linea-> textoTraducido.append(linea+"\n"));
+            salida.lines().forEach(linea-> textoTraducido.append(linea).append("\n"));
         }catch(IOException e){
             textoTraducido.append("¡ERROR WITH THE TRANSLATION ENGINE!\n"+
                     "(if you are Linux user in Debian based distro, install the engine with: \n"+
@@ -72,14 +75,8 @@ public class ControladorTranslate {
         seleccionable.setVisible(false);
         traduccion.setVisible(true);
     }
-    public void cambiarTema(ActionEvent evento){
-        //-fx-background-color
-        seleccionable.setStyle("-fx-control-inner-background: #000000; -fx-highlight-fill: #ffffff");
-        escribe.setStyle("-fx-control-inner-background: #000000; -fx-highlight-fill: #ffffff");
-        traduccion.setStyle("-fx-control-inner-background: #000000; -fx-highlight-fill: #ffffff");
-        raiz.setStyle("-fx-background-color: #000000; -fx-highlight-fill: #ffffff");
-        espanol.setStyle("-fx-background-color: #000000; -fx-highlight-fill: #ffffff");
-        english.setStyle("-fx-background-color: #000000; -fx-highlight-fill: #ffffff");
-
+    public void cambiarTema(MouseEvent event){ //En este metodo SE TIENE que recibir el MouseEvent
+        raiz.setStyle(dark.encendidoProperty().get()?"-fx-base:#101010":"");
+        //slategray y darkslategray son muy cool
     }
 }
