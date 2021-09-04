@@ -18,33 +18,34 @@ public class DarkButton extends Parent {
     private TranslateTransition animacionApagador= new TranslateTransition(Duration.seconds(.25));
     private FillTransition animacionFondo=new FillTransition(Duration.seconds(.25));
     private ParallelTransition animaciones=new ParallelTransition(animacionApagador,animacionFondo);
-    private BooleanProperty encendido= new SimpleBooleanProperty(false);
+    private BooleanProperty encendido= new SimpleBooleanProperty(true);
     public BooleanProperty encendidoProperty(){return encendido;}
     public DarkButton(){
         double k=0.6;
-        Rectangle fondo = new Rectangle(100*k, 50*k);
-        fondo.setFill(Color.WHITE);
+        var fondo = new Rectangle(100*k, 50*k);
+        fondo.setFill(Color.LIGHTGREEN);
         fondo.setStroke(Color.DARKGRAY);
         fondo.setArcWidth(50*k);
         fondo.setArcHeight(50*k);
-        //
-        Circle apagador = new Circle(25*k);
-        apagador.setCenterX(25*k);
+        var apagador = new Circle(25*k);
+        //apagador.setCenterX(25*k);
+        apagador.setCenterX(75*k);
         apagador.setCenterY(25*k);
         apagador.setFill(Color.WHITESMOKE);
         apagador.setStroke(Color.DARKGRAY);
-        //
-        Label texto = new Label("Dark mode");
+        var texto = new Label("Dark mode");
         texto.setPrefWidth(100);
         texto.setLayoutX((100*k-texto.getPrefWidth())/2);
         texto.setLayoutY(-20);
         texto.setAlignment(Pos.CENTER);
         texto.setTextAlignment(TextAlignment.CENTER);
-        //
         animacionFondo.setShape(fondo);
         animacionApagador.setNode(apagador);
         encendido.addListener((observable, estadoAnterior, estadoActual) -> {
-            animacionApagador.setToX(estadoActual?100*k-50*k:0);//si se cambia a true, entonces se recorrerá a la
+            //Si se cambia a true, entonces se recorrerá a la derecha
+            //animacionApagador.setToX(estadoActual?100*k-50*k:0);
+            //Si se cambia a false, entonces se recorrerá a la izquierda
+            animacionApagador.setToX(estadoActual?0:100*k-150*k);
             animacionFondo.setFromValue(estadoActual?Color.WHITE:Color.LIGHTGREEN);
             animacionFondo.setToValue(estadoActual?Color.LIGHTGREEN:Color.WHITE);
             animaciones.play();
