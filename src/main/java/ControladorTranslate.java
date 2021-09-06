@@ -13,6 +13,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.TextAlignment;
 import java.io.*;
+import static java.nio.charset.StandardCharsets.UTF_8;
 public class ControladorTranslate {
     @FXML
     private GridPane raiz;
@@ -41,22 +42,20 @@ public class ControladorTranslate {
         escribe.setPromptText(toEnglish ?"Write in any language":"Escribe en cualquier idioma");
     }
     public void translateText(){ //Puede o no recibir el ActionEvent
-        StringBuilder textoTraducido=new StringBuilder();
+        String textoTraducido;
         try{
             ProcessBuilder comando= new ProcessBuilder(
                     "trans","-b","-t",
                     espanol.isSelected()?"es":"en",
-                    !escribe.getText().isBlank() ? escribe.getText():"¡ENTER TEXT!");
-            BufferedReader salida=new BufferedReader(
-                    new InputStreamReader(comando.start().getInputStream()));
-            salida.lines().forEach(linea-> textoTraducido.append(linea).append("\n"));
+                    escribe.getText().isBlank() ?"¡ENTER TEXT!":escribe.getText());
+            textoTraducido= new String(comando.start().getInputStream().readAllBytes(), UTF_8);
         }catch(IOException e){
-            textoTraducido.append("¡ERROR WITH THE TRANSLATION ENGINE!\n"+
+            textoTraducido="¡ERROR WITH THE TRANSLATION ENGINE!\n"+
                     "(if you are Linux user in Debian based distro, install the engine with: \n"+
-                    "sudo apt-get install translate-shell)");
+                    "sudo apt-get install translate-shell)";
             traduccion.setTextAlignment(TextAlignment.CENTER);
         }
-        traduccion.setText(textoTraducido.toString());
+        traduccion.setText(textoTraducido);
     }
     public void hacerSeleccionable(){
         seleccionable=new TextArea(traduccion.getText());
