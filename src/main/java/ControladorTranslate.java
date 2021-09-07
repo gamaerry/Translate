@@ -50,9 +50,9 @@ public class ControladorTranslate {
                     escribe.getText().isBlank() ?"¡ENTER TEXT!":escribe.getText());
             textoTraducido= new String(comando.start().getInputStream().readAllBytes(), UTF_8);
         }catch(IOException e){
-            textoTraducido="¡ERROR WITH THE TRANSLATION ENGINE!\n"+
-                    "(if you are Linux user in Debian based distro, install the engine with: \n"+
-                    "sudo apt-get install translate-shell)";
+            textoTraducido="¡ERROR WITH THE TRANSLATION ENGINE!:\n"+
+                    "if you are Linux user in Debian based distro, install the engine with: \n"+
+                    "sudo apt-get install translate-shell";
             traduccion.setTextAlignment(TextAlignment.CENTER);
         }
         traduccion.setText(textoTraducido);
