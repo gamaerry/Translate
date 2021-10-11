@@ -2,25 +2,22 @@ plugins {
     id 'org.beryx.jlink' version '2.24.2' //'application' ya se incluye implicitamente
     id 'org.openjfx.javafxplugin' version '0.0.10'
 }
-ext{
-  modulo='traductor'
-  clase='Main'
-  version='1.2'
+repositories {
+    mavenCentral()
 }
+version '1.2'
 application {
-    mainModule = "$modulo"
-    mainClass = "$modulo.$clase"
+    mainModule = 'traductor'
+    mainClass = 'traductor.Main'
 }
 javafx{
     version='11.0.2'
     modules=['javafx.controls','javafx.fxml']
 }
-repositories {
-    mavenCentral()
-}
 jlink {
+    imageName='traductor'
+    options = ['--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages']
     launcher {
-        name = "$modulo"
+        name='traductor'
     }
 }
-version "$version"
