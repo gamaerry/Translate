@@ -1,8 +1,6 @@
-Principal.java
- Principal
-ControladorEspejo.java
- ControladorEspejo
-herramientas/DarkButton.java
- herramientas.DarkButton
+App.java
+ App
 ControladorTranslate.java
  ControladorTranslate
+herramientas/DarkButton.java
+ herramientas.DarkButton
