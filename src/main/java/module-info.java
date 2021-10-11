@@ -1,6 +1,6 @@
-module app {
+module traductor {
     requires javafx.controls;
     requires javafx.fxml;
-    opens app to javafx.fxml;
-    exports app;
+    opens traductor to javafx.fxml;
+    exports traductor;
 }

@@ -1,4 +1,4 @@
-package app;
+package traductor;
 import javafx.animation.FillTransition;
 import javafx.animation.ParallelTransition;
 import javafx.animation.TranslateTransition;

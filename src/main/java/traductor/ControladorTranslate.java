@@ -1,4 +1,4 @@
-package app;
+package traductor;
 import javafx.beans.property.ObjectProperty;
 import javafx.event.ActionEvent;
 import javafx.event.Event;

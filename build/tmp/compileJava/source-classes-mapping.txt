@@ -1,8 +1,0 @@
-app/DarkButton.java
- app.DarkButton
-app/ControladorTranslate.java
- app.ControladorTranslate
-app/Main.java
- app.Main
-module-info.java
- module-info
