@@ -6,7 +6,7 @@
 <?import javafx.scene.text.Font?>
 <?import traductor.DarkButton?>
 <GridPane fx:id="raiz" prefHeight="400.0" prefWidth="750" xmlns="http://javafx.com/javafx/11.0.2"
-          xmlns:fx="http://javafx.com/fxml/1" fx:controller="traductor.ControladorTranslate">
+          xmlns:fx="http://javafx.com/fxml/1" fx:controller="traductor.TranslateController">
     <columnConstraints>
         <ColumnConstraints hgrow="never" minWidth="10.0" prefWidth="100.0"/>
         <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0"/>
@@ -63,7 +63,7 @@
     </GridPane>
     <DarkButton fx:id="dark" onMouseClicked="#cambiarTema"
                 GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER"/>
-    <Label fx:id="traduccion" onMouseClicked="#hacerSeleccionable" onMouseDragged="#hacerSeleccionable" wrapText="true"
+    <Label fx:id="traduccion" onMouseClicked="#hacerSeleccionable" onMouseDragged="#hacerSeleccionable"  wrapText="true"
            GridPane.columnSpan="3" GridPane.rowIndex="2" GridPane.valignment="TOP">
         <font>
             <Font size="16.0"/>
